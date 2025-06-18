@@ -1,0 +1,49 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Login</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding login-page">
+  <div class="login-container">
+    <img src="../../assets/CarRentz_logo_no_bg.png" alt="CarRentz Logo" class="logo" />
+
+    <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+      <ion-item>
+        <ion-label position="floating">Username</ion-label>
+        <ion-input type="text" formControlName="username" required></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Password</ion-label>
+        <ion-input 
+          [type]="passwordFieldType" 
+          formControlName="password" 
+          required 
+        ></ion-input>
+        <ion-icon 
+          name="eye" 
+          *ngIf="passwordFieldType === 'password'" 
+          slot="end" 
+          (click)="togglePasswordVisibility()"
+        ></ion-icon>
+        <ion-icon 
+          name="eye-off" 
+          *ngIf="passwordFieldType === 'text'" 
+          slot="end" 
+          (click)="togglePasswordVisibility()"
+        ></ion-icon>
+      </ion-item>
+      <div *ngIf="loginError" class="error-message">
+        Invalid username or password!
+      </div>
+      <ion-button expand="full" type="submit" [disabled]="loginForm.invalid" class="login-btn">
+        Login
+      </ion-button>
+    </form>
+    
+    <ion-button expand="full"  class="transparent-button signup-btn" (click)="goToSignup()">
+     Sign up
+    </ion-button>
+
+  </div>
+</ion-content>

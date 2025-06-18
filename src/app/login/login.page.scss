@@ -1,0 +1,73 @@
+.login-page {
+  --background: url('../../assets/BG/BG1 (2).webp') no-repeat center center;
+  background-size: cover;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-container {
+  max-width: 380px;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  text-align: center;
+}
+
+.logo {
+  width: 120px;
+  margin-bottom: 20px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #000000;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+ion-item {
+  --background: #070707f2;
+  --border-radius: 6px;
+  --padding-start: 10px;
+  margin-bottom: 15px;
+}
+
+ion-label {
+  font-size: 16px;
+  color: #555;
+}
+
+ion-input {
+  font-size: 16px;
+  color: #fdfdfd;
+}
+
+.login-btn {
+  background-color: transparent;
+  color: #ffffff;
+  border-radius: 6px;
+  padding: 12px;
+  margin-top: 30px;
+}
+
+.error-message {
+  color: red;
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+ion-icon {
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.signup-button {
+  background-color: transparent;
+  color: #ffffff;
+  border-radius: 6px;
+  padding: 12px;
+  margin-top: 30px;
+}
+.signup-button:hover {
+  background-color: #000000;
+  color: white;
+}

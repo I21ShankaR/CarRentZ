@@ -1,0 +1,121 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Book Your Car</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="booking-form">
+  <div class="form-container">
+    <div class="car-details" *ngIf="carName">
+      <img [src]="carImage" [alt]="carName" class="car-image">
+      <div class="car-info">
+        <h2>{{carName}}</h2>
+        <p class="price">{{carPrice}}</p>
+        <p class="description">{{carDescription}}</p>
+      </div>
+    </div>
+
+    <form (ngSubmit)="confirmBooking()">
+      <ion-item>
+        <ion-label position="floating">Car Name</ion-label>
+        <ion-input
+          [(ngModel)]="carName"
+          name="carName"
+          (ionInput)="onCarNameInput($event)"
+          [readonly]="!!carName"
+        ></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Pick-up Date and Time</ion-label>
+        <ion-datetime
+          [(ngModel)]="pickUpDateTime"
+          name="pickUpDateTime"
+          [min]="today"
+          (ionChange)="onPickUpDateChange($event)"
+          [showDefaultButtons]="true"
+          (ionCancel)="showPickUpPicker = false"
+          *ngIf="showPickUpPicker"
+        ></ion-datetime>
+        <ion-button fill="clear" (click)="togglePickUpDateTime()">
+          {{ pickUpDateTime || 'Select' }}
+        </ion-button>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Drop-off Date and Time</ion-label>
+        <ion-datetime
+          [(ngModel)]="dropOffDateTime"
+          name="dropOffDateTime"
+          [min]="pickUpDateTime || today"
+          (ionChange)="onDropOffDateChange($event)"
+          [showDefaultButtons]="true"
+          (ionCancel)="showDropOffPicker = false"
+          *ngIf="showDropOffPicker"
+        ></ion-datetime>
+        <ion-button fill="clear" (click)="toggleDropOffDateTime()">
+          {{ dropOffDateTime || 'Select' }}
+        </ion-button>
+      </ion-item>
+
+      <ion-button 
+        expand="block" 
+        class="submit-btn" 
+        type="submit"
+        [disabled]="!carName || !pickUpDateTime || !dropOffDateTime"
+      >
+        Confirm Booking
+      </ion-button>
+    </form>
+  </div>
+
+  <div class="recent-bookings">
+    <h2>Recent Bookings</h2>
+    <div *ngIf="recentBookings.length === 0" class="no-bookings">
+      No recent bookings yet.
+    </div>
+    <ion-card *ngFor="let booking of recentBookings">
+      <img [src]="booking.carImage" alt="Car Image">
+      <ion-card-header>
+        <ion-card-title>{{ booking.carName }}</ion-card-title>
+        <p>{{ booking.carPrice }}</p>
+      </ion-card-header>
+      <ion-card-content>
+        <p><strong>Pick-up:</strong> {{ booking.pickUpDateTime }}</p>
+        <p><strong>Drop-off:</strong> {{ booking.dropOffDateTime }}</p>
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>
+
+<ion-footer>
+  <ion-tab-bar slot="bottom" class="custom-footer">
+    <ion-tab-button [routerLink]="['/home']" tab="home">
+      <ion-icon name="home"></ion-icon>
+      <ion-label>Home</ion-label>
+    </ion-tab-button>
+  
+    <ion-tab-button [routerLink]="['/search']" tab="search">
+      <ion-icon name="search"></ion-icon>
+      <ion-label>Search</ion-label>
+    </ion-tab-button>
+  
+    <ion-tab-button [routerLink]="['/wallet']" tab="wallet">
+      <ion-icon name="wallet-outline"></ion-icon>
+      <ion-label>Wallet</ion-label>
+    </ion-tab-button>
+  
+    <ion-tab-button [routerLink]="['/booking']" tab="menu">
+      <ion-icon name="menu"></ion-icon>
+      <ion-label>Booking</ion-label>
+    </ion-tab-button>
+  
+    <ion-tab-button [routerLink]="['/profile']" tab="profile">
+      <ion-icon name="person"></ion-icon>
+      <ion-label>Profile</ion-label>
+    </ion-tab-button>
+  </ion-tab-bar>
+</ion-footer>

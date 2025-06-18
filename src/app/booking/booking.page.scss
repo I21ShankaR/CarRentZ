@@ -1,0 +1,146 @@
+.booking-form {
+  --background: none;
+  background-image: url('../../assets/BG/BG1\ \(3\).jpeg');
+  background-size: cover;
+  background-position: center;
+}
+
+.form-container {
+  background: rgba(8, 8, 8, 0.9);
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  width: 90%;
+  max-width: 500px;
+  margin: 20px auto;
+}
+
+.car-details {
+  margin-bottom: 20px;
+  color: #fff;
+  text-align: center;
+
+  .car-image {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    margin: 0 auto 15px;
+    border-radius: 8px;
+    object-fit: cover;
+  }
+
+  .car-info {
+    h2 {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+
+    .price {
+      font-size: 20px;
+      color: #007bff;
+      margin-bottom: 8px;
+    }
+
+    .description {
+      font-size: 16px;
+      color: rgba(255, 255, 255, 0.8);
+    }
+  }
+}
+
+.form-title {
+  text-align: center;
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #fff;
+}
+
+ion-item {
+  --background: transparent;
+  --border-color: rgba(255, 255, 255, 0.1);
+  --highlight-height: 0;
+  margin-bottom: 15px;
+
+  ion-label {
+    --color: #fff;
+  }
+
+  ion-input {
+    --color: #fff;
+    --placeholder-color: rgba(255, 255, 255, 0.6);
+  }
+
+  ion-datetime {
+    --background: rgba(255, 255, 255, 0.1);
+    --color: #fff;
+  }
+
+  ion-button {
+    --color: #fff;
+  }
+}
+
+.submit-btn {
+  margin-top: 20px;
+  --background: #007bff;
+  --background-hover: #0056b3;
+  font-size: 16px;
+  --border-radius: 5px;
+
+  &:disabled {
+    --background: #cccccc;
+    --background-hover: #cccccc;
+    opacity: 0.7;
+  }
+}
+
+ion-toolbar {
+  --background: rgba(8, 8, 8, 0.9);
+  --color: #fff;
+}
+
+ion-back-button {
+  --color: #fff;
+}
+
+ion-tab-bar {
+  --background: rgba(8, 8, 8, 0.9);
+  --color: #fff;
+}
+
+ion-tab-button {
+  --color: rgba(255, 255, 255, 0.6);
+  --color-selected: #007bff;
+}
+.recent-bookings {
+  margin-top: 30px;
+  padding: 20px;
+  background: rgba(8, 8, 8, 0.8);
+  border-radius: 10px;
+}
+
+.recent-bookings h2 {
+  font-size: 24px;
+  color: #fff;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.no-bookings {
+  color: rgba(255, 255, 255, 0.6);
+  text-align: center;
+}
+
+ion-card {
+  margin-bottom: 15px;
+  --background: rgba(255, 255, 255, 0.1);
+}
+
+ion-card-title {
+  font-size: 18px;
+  color: #fff;
+}
+
+ion-card-content {
+  color: rgba(255, 255, 255, 0.8);
+}

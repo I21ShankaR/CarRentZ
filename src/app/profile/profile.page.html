@@ -1,0 +1,153 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button (click)="goToHome()" defaultHref="/tabs/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Profile</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- Profile Picture and Username -->
+  <div class="profile-image-container">
+    <img 
+      [src]="profileImage" 
+      class="profile-pic" 
+      alt="Profile Picture" 
+      (click)="enlargeImage()" 
+    />
+    <p class="username">{{ username }}</p>
+  </div>
+
+  <div class="profile-container">
+    <!-- Error Message -->
+    <div *ngIf="errorMessage" class="error-message">
+      <ion-text color="danger">
+        <p>{{ errorMessage }}</p>
+      </ion-text>
+    </div>
+
+    <!-- View Mode -->
+    <div *ngIf="!isEditing" class="profile-details">
+      <ion-item lines="none">
+        <ion-icon slot="start" name="person-outline"></ion-icon>
+        <ion-label>Name</ion-label>
+        <ion-note slot="end">{{ userName }}</ion-note>
+      </ion-item>
+      <ion-item lines="none">
+        <ion-icon slot="start" name="mail-outline"></ion-icon>
+        <ion-label>Email</ion-label>
+        <ion-note slot="end">{{ userEmail }}</ion-note>
+      </ion-item>
+      <ion-item lines="none">
+        <ion-icon slot="start" name="call-outline"></ion-icon>
+        <ion-label>Phone Number</ion-label>
+        <ion-note slot="end">{{ userPhone }}</ion-note>
+      </ion-item>
+      <ion-item lines="none">
+        <ion-icon slot="start" name="calendar-outline"></ion-icon>
+        <ion-label>Date of Birth</ion-label>
+        <ion-note slot="end">{{ dob | date }}</ion-note>
+      </ion-item>
+      <ion-item lines="none">
+        <ion-icon slot="start" name="man-outline"></ion-icon>
+        <ion-label>Gender</ion-label>
+        <ion-note slot="end">{{ gender }}</ion-note>
+      </ion-item>
+
+      <div class="button-container">
+        <ion-button (click)="toggleEditMode()">Edit Profile</ion-button>
+        <ion-button color="danger" (click)="logout()">Logout</ion-button>
+      </div>
+    </div>
+
+    <!-- Edit Mode -->
+    <div *ngIf="isEditing" class="edit-profile-form">
+      <!-- Upload New Profile Picture -->
+      <div class="upload-new-pic-container">
+        <label for="filePicker" class="upload-label">
+          <ion-icon name="cloud-upload-outline"></ion-icon>
+          <span>Upload New Profile Picture</span>
+        </label>
+        <input type="file" id="filePicker" accept="image/*" (change)="onFileSelected($event)" hidden />
+      </div>
+
+      <ion-item>
+        <ion-icon slot="start" name="person-outline"></ion-icon>
+        <ion-label position="stacked">Name</ion-label>
+        <ion-input [(ngModel)]="editName"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-icon slot="start" name="mail-outline"></ion-icon>
+        <ion-label position="stacked">Email</ion-label>
+        <ion-input [(ngModel)]="editEmail" type="email"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-icon slot="start" name="call-outline"></ion-icon>
+        <ion-label position="stacked">Phone Number</ion-label>
+        <ion-input [(ngModel)]="editPhone" type="tel"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-icon slot="start" name="calendar-outline"></ion-icon>
+        <ion-label position="stacked">Date of Birth</ion-label>
+        <ion-input [value]="dob | date" readonly></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-icon slot="start" name="man-outline"></ion-icon>
+        <ion-label position="stacked">Gender</ion-label>
+        <ion-input [value]="gender" readonly></ion-input>
+      </ion-item>
+
+      <div class="button-container">
+        <ion-button (click)="saveChanges()">Save Changes</ion-button>
+        <ion-button (click)="cancelChanges()">Cancel</ion-button>
+      </div>
+    </div>
+  </div>
+
+  <ion-modal [isOpen]="isImageModalOpen" (ionModalDidDismiss)="closeImageModal()">
+    <ion-header>
+      <ion-toolbar>
+        <ion-buttons slot="start">
+          <ion-button (click)="closeImageModal()">
+            <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+          </ion-button>
+        </ion-buttons>
+        <ion-title>Profile Picture</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content class="modal-image-content">
+      <div class="modal-image-container">
+        <img [src]="profileImage" alt="Enlarged Profile Picture" class="enlarged-image" />
+      </div>
+    </ion-content>
+  </ion-modal>
+</ion-content>
+<ion-footer>
+  <ion-tab-bar slot="bottom" class="custom-footer">
+    <ion-tab-button [routerLink]="['/home']" tab="home">
+      <ion-icon name="home"></ion-icon>
+      <ion-label>Home</ion-label>
+    </ion-tab-button>
+  
+    <ion-tab-button [routerLink]="['/search']" tab="search">
+      <ion-icon name="search"></ion-icon>
+      <ion-label>Search</ion-label>
+    </ion-tab-button>
+  
+    <ion-tab-button [routerLink]="['/wallet']" tab="wallet">
+      <ion-icon name="wallet-outline"></ion-icon>
+      <ion-label>Wallet</ion-label>
+    </ion-tab-button>
+  
+    <ion-tab-button [routerLink]="['/booking']" tab="menu">
+      <ion-icon name="menu"></ion-icon>
+      <ion-label>Booking</ion-label>
+    </ion-tab-button>
+  
+    <ion-tab-button [routerLink]="['/profile']" tab="profile">
+      <ion-icon name="person"></ion-icon>
+      <ion-label>Profile</ion-label>
+    </ion-tab-button>
+  </ion-tab-bar>
+  </ion-footer>

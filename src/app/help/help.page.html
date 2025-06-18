@@ -1,0 +1,63 @@
+<ion-header>
+  <ion-toolbar color="light">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Support</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="support-content">
+  <div class="support-container">
+    <div class="support-header">
+      <img src="../../assets/CarRentz_logo_no_bg.png" alt="Support" class="support-icon"/>
+      <h2>Hello, How can we Help you?</h2>
+    </div>
+
+    <div class="support-options">
+      <ion-item button detail="true">
+        <ion-icon name="call-outline" slot="start"></ion-icon>
+        <ion-label>Call us at +91-9905893255</ion-label>
+      </ion-item>
+
+      <ion-item button detail="true" (click)="openChatbot()">
+        <ion-icon name="chatbubble-ellipses-outline" slot="start"></ion-icon>
+        <ion-label>Chat with Us</ion-label>
+      </ion-item>
+      
+      <ion-item button detail="true" (click)="openFAQs()">
+        <ion-icon name="help-circle-outline" slot="start"></ion-icon>
+        <ion-label>Frequently Asked Questions</ion-label>
+      </ion-item>
+    </div>
+
+    <div *ngIf="isFAQsOpen" class="faqs-container">
+      <ion-button fill="clear" (click)="closeFAQs()" class="back-btn">
+        <ion-icon name="arrow-back-outline"></ion-icon> Back
+      </ion-button>
+      <div class="faqs-category">
+        <ion-item button (click)="selectCategory('Car Details')">
+          <ion-label>Car Details</ion-label>
+        </ion-item>
+        <ion-item button (click)="selectCategory('Booking Issues')">
+          <ion-label>Booking Issues</ion-label>
+        </ion-item>
+        <ion-item button (click)="selectCategory('Payment Queries')">
+          <ion-label>Payment Queries</ion-label>
+        </ion-item>
+      </div>
+
+      <div *ngIf="selectedCategory" class="faqs-list">
+        <h3>{{ selectedCategory }} FAQs</h3>
+        <div *ngFor="let faq of faqs[selectedCategory]">
+          <ion-item>
+            <ion-label>
+              <h4>{{ faq.question }}</h4>
+              <p>{{ faq.answer }}</p>
+            </ion-label>
+          </ion-item>
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>

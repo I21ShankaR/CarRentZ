@@ -1,0 +1,100 @@
+<ion-header>
+  <ion-toolbar class="toolbar">
+    <ion-buttons slot="start">
+      <ion-back-button style="color: white;" defaultHref="home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Wallet</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen>
+  <div class="wallet-container">
+    <ion-card class="wallet-card">
+      <ion-card-content>
+        <div class="balance-section">
+          <ion-text color="primary" class="balance">
+            <ion-icon name="cash-outline" class="balance-icon"></ion-icon>
+            ₹{{ balance.toLocaleString() }}
+          </ion-text>
+          <ion-button expand="full" class="add-funds-button" (click)="openAddFundsForm()">Add Funds</ion-button>
+        </div>
+
+        <div class="transaction-history">
+          <ion-card class="transaction-card">
+            <ion-card-header>
+              <ion-card-title class="transaction-title">Transaction History</ion-card-title>
+            </ion-card-header>
+            <ion-card-content>
+              <ion-list>
+                <ion-item *ngFor="let transaction of transactions">
+                  <ion-label>
+                    <h2>{{ transaction.title }}</h2>
+                    <p [ngClass]="{'text-success': transaction.amount >= 0, 'text-danger': transaction.amount < 0}">
+                      ₹{{ transaction.amount.toLocaleString() }}
+                    </p>
+                  </ion-label>
+                  <ion-note slot="end" [color]="transaction.amount >= 0 ? 'success' : 'danger'">
+                    {{ transaction.date }}
+                  </ion-note>
+                </ion-item>
+              </ion-list>
+            </ion-card-content>
+          </ion-card>
+        </div>
+      </ion-card-content>
+    </ion-card>
+  </div>
+
+  <div *ngIf="showAddFundsForm" class="add-funds-form">
+    <ion-card class="add-funds-card">
+      <!-- <ion-card-header>
+        <ion-card-title>Add Funds</ion-card-title>
+      </ion-card-header> -->
+      <ion-card-content>
+        <div class="qr-section">
+          <img src="../../assets/QR Code.jpg" alt="QR Code" class="qr-code" />
+          <p class="upi-details">UPI ID: 9905893255&#64;sliceaxis</p>
+        </div>
+        <ion-item>
+          <ion-label position="floating">Amount</ion-label>
+          <ion-input type="number" [(ngModel)]="fundsAmount"></ion-input>
+        </ion-item>
+        <div class="screenshot-section">
+          <label>Upload Payment Screenshot</label>
+          <input type="file" (change)="onFileSelected($event)" />
+        </div>
+        <ion-button expand="full" class="submit-button" (click)="addFunds()">Submit</ion-button>
+        <ion-button expand="full" class="cancel-button" (click)="closeAddFundsForm()">Cancel</ion-button>
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>
+
+<ion-footer>
+  <ion-tab-bar slot="bottom" class="custom-footer">
+    <ion-tab-button [routerLink]="['/home']" tab="home">
+      <ion-icon name="home"></ion-icon>
+      <ion-label>Home</ion-label>
+    </ion-tab-button>
+  
+    <ion-tab-button [routerLink]="['/search']" tab="search">
+      <ion-icon name="search"></ion-icon>
+      <ion-label>Search</ion-label>
+    </ion-tab-button>
+  
+    <ion-tab-button [routerLink]="['/wallet']" tab="wallet">
+      <ion-icon name="wallet-outline"></ion-icon>
+      <ion-label>Wallet</ion-label>
+    </ion-tab-button>
+  
+    <ion-tab-button [routerLink]="['/booking']" tab="menu">
+      <ion-icon name="menu"></ion-icon>
+      <ion-label>Booking</ion-label>
+    </ion-tab-button>
+  
+    <ion-tab-button [routerLink]="['/profile']" tab="profile">
+      <ion-icon name="person"></ion-icon>
+      <ion-label>Profile</ion-label>
+    </ion-tab-button>
+  </ion-tab-bar>
+  </ion-footer>

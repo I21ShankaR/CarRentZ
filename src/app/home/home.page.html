@@ -1,0 +1,70 @@
+<ion-header>
+  <ion-toolbar color="light">
+    <div style="display: flex; align-items: center; justify-content: space-between; width: 100%; padding: 8px 16px;">
+      <img src="../../assets/Logo CarRentz.png" alt="CarRentz Logo" style="height: 75px; width: auto; object-fit: contain;" />
+      <ion-button fill="clear" routerLink="/help" style="display: flex; align-items: center;">
+        <ion-icon name="help-circle-outline" style="font-size: 40px; color: #ffa500;"></ion-icon>
+      </ion-button>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-searchbar
+    placeholder="Search for cars"
+    [(ngModel)]="searchQuery"
+    (ionInput)="filterCars()"
+  ></ion-searchbar>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12">
+        <h2>Featured Cars</h2>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="6" *ngFor="let car of filteredCars">
+        <ion-card (click)="goToBooking(car)">
+          <img [src]="car.image" [alt]="car.name" />
+          <ion-card-header>
+            <ion-card-title>{{ car.name }}</ion-card-title>
+            <ion-card-subtitle>{{ car.price }}</ion-card-subtitle>
+          </ion-card-header>
+          <ion-card-content>
+            <p>{{ car.description }}</p>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid> 
+</ion-content>
+
+<ion-footer>
+<ion-tab-bar slot="bottom" class="custom-footer">
+  <ion-tab-button [routerLink]="['/home']" tab="home">
+    <ion-icon name="home"></ion-icon>
+    <ion-label>Home</ion-label>
+  </ion-tab-button>
+
+  <ion-tab-button [routerLink]="['/search']" tab="search">
+    <ion-icon name="search"></ion-icon>
+    <ion-label>Search</ion-label>
+  </ion-tab-button>
+
+  <ion-tab-button [routerLink]="['/wallet']" tab="wallet">
+    <ion-icon name="wallet-outline"></ion-icon>
+    <ion-label>Wallet</ion-label>
+  </ion-tab-button>
+
+  <ion-tab-button [routerLink]="['/booking']" tab="menu">
+    <ion-icon name="menu"></ion-icon>
+    <ion-label>Booking</ion-label>
+  </ion-tab-button>
+
+  <ion-tab-button [routerLink]="['/profile']" tab="profile">
+    <ion-icon name="person"></ion-icon>
+    <ion-label>Profile</ion-label>
+  </ion-tab-button>
+</ion-tab-bar>
+</ion-footer>

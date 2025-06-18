@@ -1,0 +1,58 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar class="toolbar">
+    <ion-buttons slot="start">
+      <ion-back-button style="color: white;" defaultHref="home"></ion-back-button>
+    </ion-buttons>
+    <ion-title style="color: white;">Search</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="main-content">
+  <div class="search-container">
+    <input 
+      type="text" 
+      placeholder="Search cars..." 
+      [(ngModel)]="searchQuery" 
+      (input)="onSearch()"
+      class="search-bar" 
+    />
+  </div>
+
+  <div class="search-results" *ngIf="filteredResults.length > 0">
+    <div class="car-card" *ngFor="let car of filteredResults" (click)="goToBooking(car)">
+      <div class="car-image">
+        <img [src]="car.image" [alt]="car.name">
+      </div>
+      <div class="car-info">
+        <h3>{{ car.name }}</h3>
+        <p class="description">{{ car.description }}</p>
+        <p class="price">{{ car.price }}</p>
+      </div>
+    </div>
+  </div>
+</ion-content>
+
+<ion-footer class="ion-no-border">
+  <ion-tab-bar slot="bottom" class="custom-footer">
+    <ion-tab-button [routerLink]="['/home']" tab="home">
+      <ion-icon name="home"></ion-icon>
+      <ion-label>Home</ion-label>
+    </ion-tab-button>
+    <ion-tab-button [routerLink]="['/search']" tab="search">
+      <ion-icon name="search"></ion-icon>
+      <ion-label>Search</ion-label>
+    </ion-tab-button>
+    <ion-tab-button [routerLink]="['/wallet']" tab="wallet">
+      <ion-icon name="wallet-outline"></ion-icon>
+      <ion-label>Wallet</ion-label>
+    </ion-tab-button>
+    <ion-tab-button [routerLink]="['/booking']" tab="menu">
+      <ion-icon name="menu"></ion-icon>
+      <ion-label>Booking</ion-label>
+    </ion-tab-button>
+    <ion-tab-button [routerLink]="['/profile']" tab="profile">
+      <ion-icon name="person"></ion-icon>
+      <ion-label>Profile</ion-label>
+    </ion-tab-button>
+  </ion-tab-bar>
+</ion-footer>

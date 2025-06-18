@@ -1,0 +1,110 @@
+.profile-image-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.profile-pic {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #ccc;
+  cursor: pointer;
+}
+
+.profile-pic-edit {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #007BFF;
+  cursor: pointer;
+}
+
+.username {
+  margin-top: 10px;
+  font-weight: bold;
+  font-size: 18px;
+  color: #333;
+}
+
+.modal-image-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.enlarged-image {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 10px;
+}
+
+.profile-container {
+  padding: 20px;
+}
+
+.profile-details ion-item,
+.edit-profile-form ion-item {
+  margin-bottom: 16px;
+}
+
+.button-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+ion-button {
+  width: 48%;
+}
+
+.error-message {
+  color: red;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.edit-profile-form {
+  margin-top: 20px;
+}
+
+ion-label {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.modal-image-content {
+  background-color: #000;
+}
+.upload-new-pic-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.upload-label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #007bff;
+  color: white;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.upload-label ion-icon {
+  margin-right: 8px;
+  font-size: 18px;
+}
+
+.upload-label:hover {
+  background-color: #0056b3;
+}

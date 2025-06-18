@@ -1,0 +1,113 @@
+.support-content {
+    --background: url('../../assets/BG/BG1 (3).jpeg') no-repeat center center/cover;
+  }
+  
+  .support-container {
+    padding: 20px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+  
+  .support-header {
+    text-align: center;
+    padding: 24px;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 16px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    
+    img.support-icon {
+    width: 140px;
+    height: 140px;
+    margin-bottom: 20px;
+    object-fit: contain;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #ffffff;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+  
+    h2 {
+      color: #333;
+      font-size: 26px;
+      margin: 0;
+      font-weight: 600;
+    }
+  }
+  
+  .support-options {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  
+    ion-item {
+      --background: transparent;
+      --border-color: rgba(0, 0, 0, 0.08);
+      --padding-start: 16px;
+      --padding-end: 16px;
+      --padding-top: 16px;
+      --padding-bottom: 16px;
+      margin-bottom: 1px;
+  
+      ion-icon {
+        color: #053e77;
+        font-size: 28px;
+        margin-right: 16px;
+      }
+  
+      ion-label {
+        font-size: 18px;
+        font-weight: 500;
+        color: #333;
+      }
+  
+      &:active {
+        --background: rgba(0, 0, 0, 0.05);
+      }
+    }
+  }
+  
+  ion-toolbar {
+    --background: #ffffff;
+    --color: #333333;
+    --border-color: transparent;
+    --padding-top: 8px;
+    --padding-bottom: 8px;
+  }
+  
+  ion-back-button {
+    --color: #333333;
+    --icon-font-size: 24px;
+  }
+  
+  ion-title {
+    font-size: 20px;
+    font-weight: 600;
+  }
+  
+ 
+  .faq-section {
+    padding: 20px;
+  }
+  
+  .faq-section h2 {
+    margin-bottom: 16px;
+  }
+  
+  .faq-container {
+    padding: 20px;
+  }
+  
+  .faq-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .faq-content ion-item {
+    --padding-start: 16px;
+    --padding-end: 16px;
+  }
+   

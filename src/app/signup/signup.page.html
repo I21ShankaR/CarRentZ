@@ -1,0 +1,143 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button routerLink="/login" fill="clear">
+        <ion-icon name="arrow-back-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Sign Up</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding signup-page">
+  <div class="signup-container">
+    <div class="profile-picture-container">
+      <img
+        [src]="profilePicture || defaultProfilePicture"
+        alt="Profile Picture"
+        class="profile-picture"
+      />
+      <ion-button expand="block" color="primary" fill="outline">
+        <label for="profilePictureInput" class="file-upload-label">Upload Profile Picture</label>
+        <input
+          id="profilePictureInput"
+          type="file"
+          (change)="onProfilePictureChange($event)"
+          class="file-upload-input"
+          accept="image/*"
+        />
+      </ion-button>
+    </div>
+
+    <form [formGroup]="signupForm" (ngSubmit)="onSignup()">
+      <ion-item>
+        <ion-label position="floating">Username</ion-label>
+        <ion-input type="text" formControlName="username" required></ion-input>
+      </ion-item>
+      <ion-text color="danger" *ngIf="signupForm.get('username')?.touched && signupForm.get('username')?.invalid">
+        <p class="error-message">Username is required.</p>
+      </ion-text>
+
+      <ion-item>
+        <ion-label position="floating">Full Name</ion-label>
+        <ion-input type="text" formControlName="name" required></ion-input>
+      </ion-item>
+      <ion-text color="danger" *ngIf="signupForm.get('name')?.touched && signupForm.get('name')?.invalid">
+        <p class="error-message">Full Name is required.</p>
+      </ion-text>
+
+      <ion-item>
+        <ion-label position="floating">Email</ion-label>
+        <ion-input type="email" formControlName="email" required></ion-input>
+      </ion-item>
+      <ion-text color="danger" *ngIf="signupForm.get('email')?.touched && signupForm.get('email')?.invalid">
+        <p class="error-message">Valid Email is required.</p>
+      </ion-text>
+
+      <ion-item>
+        <ion-label position="floating">Password</ion-label>
+        <ion-input
+          [type]="passwordVisible ? 'text' : 'password'"
+          formControlName="password"
+          required
+        ></ion-input>
+        <ion-icon
+          [name]="passwordVisible ? 'eye-off-outline' : 'eye-outline'"
+          (click)="togglePasswordVisibility()"
+          slot="end"
+        ></ion-icon>
+      </ion-item>
+      <ion-text color="danger" *ngIf="signupForm.get('password')?.touched && signupForm.get('password')?.invalid">
+        <p class="error-message">Password must be at least 6 characters.</p>
+      </ion-text>
+
+      <ion-item>
+        <ion-label position="floating">Confirm Password</ion-label>
+        <ion-input
+          [type]="confirmPasswordVisible ? 'text' : 'password'"
+          formControlName="confirmPassword"
+          required
+        ></ion-input>
+        <ion-icon
+          [name]="confirmPasswordVisible ? 'eye-off-outline' : 'eye-outline'"
+          (click)="toggleConfirmPasswordVisibility()"
+          slot="end"
+        ></ion-icon>
+      </ion-item>
+      <ion-text color="danger" *ngIf="signupForm.get('confirmPassword')?.touched && signupForm.get('confirmPassword')?.invalid">
+        <p class="error-message">Passwords do not match.</p>
+      </ion-text>
+
+      <ion-item>
+        <ion-label position="floating">Phone Number</ion-label>
+        <ion-input type="tel" formControlName="phoneNumber" required></ion-input>
+      </ion-item>
+      <ion-text color="danger" *ngIf="signupForm.get('phoneNumber')?.touched && signupForm.get('phoneNumber')?.invalid">
+        <p class="error-message">Phone Number must be 10 digits.</p>
+      </ion-text>
+
+      <ion-item>
+        <ion-label>Gender</ion-label>
+        <ion-select formControlName="gender" required>
+          <ion-select-option value="male">Male</ion-select-option>
+          <ion-select-option value="female">Female</ion-select-option>
+          <ion-select-option value="other">Other</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-text color="danger" *ngIf="signupForm.get('gender')?.touched && signupForm.get('gender')?.invalid">
+        <p class="error-message">Gender is required.</p>
+      </ion-text>
+
+      <ion-item>
+        <ion-label position="floating">Date of Birth</ion-label>
+        <ion-input
+          readonly
+          [value]="selectedDOB"
+          (click)="openDatePicker()"
+          formControlName="dob"
+        ></ion-input>
+        <ion-icon name="calendar-outline" slot="end"></ion-icon>
+      </ion-item>
+      
+      <ion-text color="danger" *ngIf="signupForm.get('dob')?.touched && signupForm.get('dob')?.errors?.['invalidDOB']">
+        <p class="error-message">You must be at least 18 years old.</p>
+      </ion-text>
+      
+      <ion-datetime
+        #dobPicker
+        [max]="maxDOB"
+        [min]="minDOB"
+        display-format="DD/MM/YYYY"
+        picker-format="DD MMM YYYY"
+        (ionChange)="onDateChange($event)"
+        [class.ion-hide]="!showCalendar"
+      ></ion-datetime>
+      
+      
+
+      <ion-button expand="full" type="submit" [disabled]="signupForm.invalid" color="dark" class="signup-btn">
+        Sign Up
+      </ion-button>
+    </form>
+  </div>
+</ion-content>

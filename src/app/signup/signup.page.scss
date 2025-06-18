@@ -1,0 +1,85 @@
+.signup-page {
+  --background: url('../../assets/BG/BG1 (2).webp') no-repeat center center/cover;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.signup-container {
+  max-width: 380px;
+  padding: 30px;
+  background: rgba(8, 8, 8, 0.85); 
+  border-radius: 10px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3); 
+  text-align: center;
+}
+
+ion-item {
+  --background: #1e1e1e; 
+  --border-radius: 6px;
+  --padding-start: 10px;
+  margin-bottom: 15px;
+}
+
+ion-label {
+  font-size: 16px;
+  color: #bbb; 
+}
+
+ion-input {
+  font-size: 16px;
+  color: #ffffff;
+}
+
+.signup-btn {
+  background-color: #000000;
+  color: #fff;
+  border-radius: 6px;
+  padding: 12px;
+  margin-top: 30px;
+}
+
+ion-button[fill="clear"] {
+  color: #ffffff;
+}
+
+ion-button[fill="clear"] ion-icon {
+  font-size: 24px;
+}
+
+.profile-picture-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.profile-picture {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 10px;
+  border: 2px solid #ffffff; 
+}
+
+.file-upload-input {
+  display: none;
+}
+
+.file-upload-label {
+  cursor: pointer;
+}
+
+.error-message {
+  font-size: 12px;
+  color: #ff3860; 
+  margin: 0;
+  padding: 0 10px 10px 10px;
+  text-align: left;
+}
+
+.ion-hide {
+  display: none;
+}

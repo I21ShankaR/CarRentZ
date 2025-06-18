@@ -1,0 +1,33 @@
+ion-footer {
+  position: fixed; 
+  bottom: 0;
+  left: 0; 
+  right: 0; 
+  z-index: 1000; 
+  background: rgba(255, 255, 255, 0.2);
+  border-top: 1px solid rgba(255, 255, 255, 0.3); 
+}
+
+.custom-footer ion-icon {
+  font-size: 1.5rem;
+  margin-bottom: 4px;
+}
+
+.custom-footer ion-button:hover {
+  background-color: rgba(158, 154, 154, 0.1);
+  border-radius: 10px;
+}
+
+ion-content {
+  --background: url('../../assets/BG/BG1 (3).jpeg') no-repeat center;
+  background-size: cover;
+}
+
+ion-card {
+  margin: 10px;
+}
+
+ion-card-title,
+ion-card-subtitle {
+  color: #fffdfd;
+}
